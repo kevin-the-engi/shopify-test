@@ -1,4 +1,4 @@
-// import { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
@@ -6,16 +6,7 @@ import Form from './components/Form/Form.jsx';
 import Response from './components/Response/Response.jsx';
 
 const App = () => {
-  // const [prompts, addPrompt] = useState([]);
-  const testdata = []
-  testdata[0] = {
-    prompt: "test prompt1",
-    response: "test response1"
-  }
-  testdata[1] = {
-    prompt: "test prompt2",
-    response: "test response2"
-  }
+  const [data, setData] = useState([{}]);
 
   const getResponse = (prompt) => {
     const api = process.env.REACT_APP_API
@@ -35,9 +26,15 @@ const App = () => {
 
     axios.post(api, request, auth)
       .then((res) => {
-        console.log(res)
+        const { id, choices } = res.data;
+        const response = choices[0].text;
+        const promptData = {
+          id, prompt, response
+        }
+        
+        setData(data => [promptData, ...data]);
       })
-      .catch((err) => console.log(err))
+      .catch((err) => console.log(err));
   }
 
   return (
@@ -46,7 +43,7 @@ const App = () => {
           Fun with AI
       </h1>
       <Form getResponse={getResponse} />
-      <Response data={testdata} />
+      <Response data={data} />
     </div>
   );
 }
