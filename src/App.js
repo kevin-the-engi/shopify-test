@@ -7,14 +7,24 @@ import Response from './components/Response/Response.jsx';
 
 const App = () => {
   // const [prompts, addPrompt] = useState([]);
-  const testdata = {
-    prompt: "test prompt",
-    response: "test response"
+  const testdata = []
+  testdata[0] = {
+    prompt: "test prompt1",
+    response: "test response1"
+  }
+  testdata[1] = {
+    prompt: "test prompt2",
+    response: "test response2"
   }
 
   const getResponse = (prompt) => {
-    const api = 'https://api.openai.com/v1/engines/text-curie-001/completions';
-    const options = {
+    const api = process.env.REACT_APP_API
+    const auth = {
+      headers: {
+        'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+      }
+    }
+    const request = {
       prompt, 
       temperature: 0.5,
       max_tokens: 64,
@@ -23,10 +33,11 @@ const App = () => {
       presence_penalty: 0.0
     }
 
-    axios.post(api, options)
+    axios.post(api, request, auth)
       .then((res) => {
         console.log(res)
       })
+      .catch((err) => console.log(err))
   }
 
   return (
