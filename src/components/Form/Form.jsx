@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const Form = () => {
+const Form = ({ getResponse }) => {
     const [prompt, setPrompt] = useState('');
 
     const handleChange = (e) => {
@@ -10,6 +10,7 @@ const Form = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        getResponse(prompt)
     }
 
     return (

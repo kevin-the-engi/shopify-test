@@ -1,14 +1,19 @@
-import { useState } from 'react';
+// import { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
 import Form from './components/Form/Form.jsx';
+import Response from './components/Response/Response.jsx';
 
 const App = () => {
-  const [prompts, addPrompt] = useState([]);
+  // const [prompts, addPrompt] = useState([]);
+  const testdata = {
+    prompt: "test prompt",
+    response: "test response"
+  }
 
-  const getResponse = ({ prompt }) => {
-    const api = "https://api.openai.com/v1/engines/text-curie-001/completions";
+  const getResponse = (prompt) => {
+    const api = 'https://api.openai.com/v1/engines/text-curie-001/completions';
     const options = {
       prompt, 
       temperature: 0.5,
@@ -20,7 +25,7 @@ const App = () => {
 
     axios.post(api, options)
       .then((res) => {
-
+        console.log(res)
       })
   }
 
@@ -30,6 +35,7 @@ const App = () => {
           Fun with AI
       </h1>
       <Form getResponse={getResponse} />
+      <Response data={testdata} />
     </div>
   );
 }
