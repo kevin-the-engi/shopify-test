@@ -4,4 +4,16 @@
     background-color: rgb(214, 227, 243);
     border: none;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+th, td {
+    vertical-align: top;
+    padding-bottom: 1em;
+}
+
+th {
+    text-align: left;
+    width: 6em;
 }

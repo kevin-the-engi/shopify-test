@@ -4,7 +4,7 @@ import ResponseCards from '../ResponseCards/ResponseCards.jsx';
 
 const Response = ({ data }) => {
     return(
-        <div className="responses">
+        <section className="responses">
             <h2>Responses</h2>
 
             {data.map(({ id, ...otherItemProps }) => {
@@ -15,7 +15,7 @@ const Response = ({ data }) => {
                     {...otherItemProps} />
                 )})
             }
-        </div>
+        </section>
     )
 }
 

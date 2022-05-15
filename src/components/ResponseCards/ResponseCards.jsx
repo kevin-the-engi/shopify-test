@@ -1,11 +1,17 @@
 import './ResponseCards.scss';
 
-const ResponseCards = ({ id, prompt, response }) => {
+const ResponseCards = ({ prompt, response }) => {
     return(
-        <div className="responses-cards">
-            <span className="prompt-text">{prompt}</span>
-            <span className="response-text">{response}</span>
-        </div>
+        <table className="responses-cards">
+            <tr>
+                <th>Prompt: </th>
+                <td>{prompt}</td>
+            </tr>
+            <tr>
+                <th>Response: </th>
+                <td>{response}</td>
+            </tr>
+        </table>
     )
 }
 
