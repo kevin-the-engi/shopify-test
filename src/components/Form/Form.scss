@@ -22,3 +22,11 @@
     display: inline-block;
     font-size: 16px;
 }
+
+.submit-btn:hover {
+    background-color: limegreen;
+}
+
+.submit-btn:active {
+    background-color: darkgreen;
+}
