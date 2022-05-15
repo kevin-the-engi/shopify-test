@@ -1,4 +1,4 @@
-import ResponseItems from '../ResponseItems/ResponseItems.jsx';
+import ResponseItems from '../ResponseCards/ResponseCards.jsx';
 
 const Response = ({ data }) => {
     return(

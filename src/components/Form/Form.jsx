@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import './Form.scss';
 
 const Form = ({ getResponse }) => {
     const [prompt, setPrompt] = useState('');
@@ -17,7 +18,9 @@ const Form = ({ getResponse }) => {
         <form className="form" onSubmit={handleSubmit}>
             <label> Enter prompt: </label>
                 <textarea type="text" name="name" value={prompt} rows="5" cols="30" onChange={handleChange}/>
-            <input type="submit" value="Submit" />
+                <div className="submit"> 
+                    <input type="submit" className="submit-btn" value="Submit"/>
+                </div>
         </form>
     )
 }

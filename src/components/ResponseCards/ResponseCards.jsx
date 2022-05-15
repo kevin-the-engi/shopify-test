@@ -1,7 +1,7 @@
-const ResponseItems = ({ prompt, response }) => {
+const ResponseCards = ({ prompt, response }) => {
     return(
-        <div className="container-items">
-            <h2>box</h2>
+        <div className="container-cards">
+            <h2>Responses</h2>
 
             <span className="prompt-text">{prompt}</span>
             <span className="response-text">{response}</span>
@@ -9,4 +9,4 @@ const ResponseItems = ({ prompt, response }) => {
     )
 }
 
-export default ResponseItems;
+export default ResponseCards;

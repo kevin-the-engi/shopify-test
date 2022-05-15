@@ -42,8 +42,10 @@ const App = () => {
       <h1 className="App-header">
           Fun with AI
       </h1>
-      <Form getResponse={getResponse} />
-      <Response data={data} />
+      <div className="App-body">
+        <Form getResponse={getResponse} />
+        <Response data={data} />
+      </div>
     </div>
   );
 }
