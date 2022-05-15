@@ -6,7 +6,11 @@ import Form from './components/Form/Form.jsx';
 import Response from './components/Response/Response.jsx';
 
 const App = () => {
-  const [data, setData] = useState([{}]);
+  const [data, setData] = useState([{
+    id: '',
+    prompt: '',
+    response: ''
+  }]);
 
   const getResponse = (prompt) => {
     const api = process.env.REACT_APP_API

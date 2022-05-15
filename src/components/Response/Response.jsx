@@ -1,13 +1,19 @@
-import ResponseItems from '../ResponseCards/ResponseCards.jsx';
+import './Responses.scss';
+
+import ResponseCards from '../ResponseCards/ResponseCards.jsx';
 
 const Response = ({ data }) => {
     return(
-        <div className="container">
-            {data.map(({ id, ...otherItemProps }) => (
-                <ResponseItems
+        <div className="responses">
+            <h2>Responses</h2>
+
+            {data.map(({ id, ...otherItemProps }) => {
+                console.log(id)
+                return (
+                <ResponseCards
                     key={id}
                     {...otherItemProps} />
-                ))
+                )})
             }
         </div>
     )
