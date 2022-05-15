@@ -2,17 +2,19 @@ import './Responses.scss';
 
 import ResponseCards from '../ResponseCards/ResponseCards.jsx';
 
-const Response = ({ data }) => {
+const Response = ({ data, visibility }) => {
     return(
         <section className="responses">
-            <h2>Responses</h2>
+            {visibility ? <h2>Responses</h2> : null}
 
-            {data.map(({ id, ...otherItemProps }) => {
-                console.log(id)
-                return (
-                <ResponseCards
-                    key={id}
-                    {...otherItemProps} />
+            {data
+                .filter(( {response} ) => response.length)
+                .map(({ id, ...otherItemProps }) => {
+                    return (
+                    <ResponseCards
+                        key={id}
+                        {...otherItemProps} 
+                    />
                 )})
             }
         </section>

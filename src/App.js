@@ -11,8 +11,9 @@ const App = () => {
     prompt: '',
     response: ''
   }]);
+  const [visible, setVisible] = useState(false);
 
-  const getResponse = (prompt) => {
+  const getResponse = (prompt, toggle) => {
     const api = process.env.REACT_APP_API
     const auth = {
       headers: {
@@ -36,7 +37,13 @@ const App = () => {
           id, prompt, response
         }
         
-        setData(data => [promptData, ...data]);
+        if (data.length === 1) {
+          setData(data => [promptData]);
+        } else {
+          setData(data => [promptData, ...data]);
+        }
+
+        setVisible(toggle);
       })
       .catch((err) => console.log(err));
   }
@@ -48,7 +55,7 @@ const App = () => {
       </h1>
       <div className="App-body">
         <Form getResponse={getResponse} />
-        <Response data={data} />
+        <Response data={data} visibility={visible} />
       </div>
     </div>
   );

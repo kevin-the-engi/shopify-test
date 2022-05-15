@@ -3,6 +3,7 @@ import './Form.scss';
 
 const Form = ({ getResponse }) => {
     const [prompt, setPrompt] = useState('');
+    const [toggle, setToggle] = useState(false);
 
     const handleChange = (e) => {
         const text = e.target.value;
@@ -11,7 +12,8 @@ const Form = ({ getResponse }) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        getResponse(prompt)
+        setToggle(true);
+        getResponse(prompt, toggle);
     }
 
     return (
