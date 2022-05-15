@@ -1,3 +1,4 @@
+import React from 'react';
 import './ResponseCards.scss';
 
 const ResponseCards = ({ prompt, response }) => {

@@ -1,3 +1,4 @@
+import React from 'react';
 import './Responses.scss';
 
 import ResponseCards from '../ResponseCards/ResponseCards.jsx';

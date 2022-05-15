@@ -1,6 +1,6 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import './App.css';
+import './App.scss';
 
 import Form from './components/Form/Form.jsx';
 import Response from './components/Response/Response.jsx';
@@ -14,10 +14,10 @@ const App = () => {
   const [visible, setVisible] = useState(false);
 
   const getResponse = (prompt, toggle) => {
-    const api = process.env.REACT_APP_API
+    const api = 'https://api.openai.com/v1/engines/text-curie-001/completions'
     const auth = {
       headers: {
-        'Authorization': `Bearer ${process.env.REACT_APP_API_KEY}`
+        'Authorization': `Bearer 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`
       }
     }
     const request = {
