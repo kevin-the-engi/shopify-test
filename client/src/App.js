@@ -12,16 +12,28 @@ const App = () => {
 		prompt: '',
 		response: ''
 	}]);
+	const [engines, setEngines] = useState([]);
 	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
 		getData();
-	})
+		getEngines();
+	}, [])
 
 	const getData = () => {
 		axios.get('/app')
 			.then(res => {
 				setData(res.data);
+			})
+			.catch(err => {
+				console.log(err);
+			})
+	}
+
+	const getEngines = () => {
+		axios.get('/engines')
+			.then(res => {
+				setEngines(res.data);
 			})
 			.catch(err => {
 				console.log(err);
@@ -44,8 +56,11 @@ const App = () => {
 					Fun with AI
 			</h1>
 			<div className="App-body">
-				<Form postPrompt={postPrompt} />
-				<Response data={data} visibility={visible} />
+				<Form 
+					postPrompt={postPrompt} 
+					engines={engines}
+				/>
+				<Response data={data} />
 			</div>
 		</div>
 	);

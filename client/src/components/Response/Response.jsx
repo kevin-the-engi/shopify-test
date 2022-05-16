@@ -3,7 +3,7 @@ import './Responses.scss';
 
 import ResponseCards from '../ResponseCards/ResponseCards.jsx';
 
-const Response = ({ data, visibility }) => {
+const Response = ({ data }) => {
   return(
     <section className="responses">
 			{data
