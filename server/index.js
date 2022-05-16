@@ -18,6 +18,7 @@ const KEY = {
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
 
+// Get route to get collected prompt/response data
 app.get('/app', (req, res) => {
   controller.readData((err, data) => {
     if (err) {
@@ -28,6 +29,7 @@ app.get('/app', (req, res) => {
   })
 });
 
+// Get route to get list of engines
 app.get('/engines', (req, res) => {
   axios.get(API, KEY)
     .then(engines => {
@@ -40,6 +42,7 @@ app.get('/engines', (req, res) => {
     })
 });
 
+// POST route to query API with prompt and save data to database
 app.post('/submit', (req, res) => {
   const prompt = req.body.prompt;
   const request = {
@@ -52,14 +55,17 @@ app.post('/submit', (req, res) => {
   }
   const engine = API + '/text-curie-001/completions'
 
+  // Query API with prompt from user
   axios.post(engine, request, KEY)
     .then((apiRes) => {
       apiRes.data.prompt = prompt;
     
+      // Save prompt and response data from API to database
       controller.createData(apiRes.data, err => {
         if (err) {
           res.sendStatus(400);
         } else {
+          // Get collected data from database to send back
           controller.readData((err, data) => {
             if (err) {
               res.sendStatus(404);
