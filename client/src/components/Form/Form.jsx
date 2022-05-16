@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './Form.scss';
 
-const Form = ({ getResponse }) => {
+const Form = ({ postPrompt }) => {
     const [prompt, setPrompt] = useState('');
     const [toggle, setToggle] = useState(false);
 
@@ -13,7 +13,7 @@ const Form = ({ getResponse }) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         setToggle(true);
-        getResponse(prompt, toggle);
+        postPrompt(prompt, toggle);
     }
 
     return (
