@@ -5,6 +5,7 @@ import Dropdown from '../Dropdown/Dropdown.jsx';
 
 const Form = ({ postPrompt, engines }) => {
 	const [prompt, setPrompt] = useState('');
+	const [engine, setEngine] = useState('');
 
 	const handleChange = (e) => {
 		const text = e.target.value;

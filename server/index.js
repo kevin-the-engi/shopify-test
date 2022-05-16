@@ -44,7 +44,8 @@ app.get('/engines', (req, res) => {
 
 // POST route to query API with prompt and save data to database
 app.post('/submit', (req, res) => {
-  const prompt = req.body.prompt;
+  const prompt = req.body.prompt; 
+  const engine = req.body.engine;
   const request = {
     prompt, 
     temperature: 0.5,
@@ -53,10 +54,10 @@ app.post('/submit', (req, res) => {
     frequency_penalty: 0.0,
     presence_penalty: 0.0
   }
-  const engine = API + '/text-curie-001/completions'
-
+  const engineAPI = API + `/${engine}/` + 'completions';
+  
   // Query API with prompt from user
-  axios.post(engine, request, KEY)
+  axios.post(engineAPI, request, KEY)
     .then((apiRes) => {
       apiRes.data.prompt = prompt;
     
