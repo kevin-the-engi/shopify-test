@@ -8,8 +8,12 @@ const controller = require('../database/controller');
 const app = express();
 
 const PORT = process.env.PORT;
-const KEY = process.env.API_KEY;
 const API = process.env.API;
+const KEY = {
+  headers: {
+    'Authorization': `Bearer ${process.env.API_KEY}`
+  }
+}
 
 app.use(express.json());
 app.use(express.static(path.join(__dirname, '../client/public')));
@@ -24,6 +28,18 @@ app.get('/app', (req, res) => {
   })
 });
 
+app.get('/engines', (req, res) => {
+  axios.get(API, KEY)
+    .then(engines => {
+      const ids = engines.data.data.map(engine => engine.id)
+
+      res.status(200).send(ids)
+    })
+    .catch(err => {
+      res.sendStatus(404);
+    })
+});
+
 app.post('/submit', (req, res) => {
   const prompt = req.body.prompt;
   const request = {
@@ -34,13 +50,9 @@ app.post('/submit', (req, res) => {
     frequency_penalty: 0.0,
     presence_penalty: 0.0
   }
-  const auth = {
-    headers: {
-      'Authorization': `Bearer ${KEY}`
-    }
-  }
+  const engine = API + '/text-curie-001/completions'
 
-  axios.post(API, request, auth)
+  axios.post(engine, request, KEY)
     .then((apiRes) => {
       apiRes.data.prompt = prompt;
     
