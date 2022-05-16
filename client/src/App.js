@@ -13,7 +13,6 @@ const App = () => {
 		response: ''
 	}]);
 	const [engines, setEngines] = useState([]);
-	const [visible, setVisible] = useState(false);
 
 	useEffect(() => {
 		getData();
@@ -40,8 +39,8 @@ const App = () => {
 			})
 	}
 
-	const postPrompt = (prompt) => {
-		axios.post('/submit', {prompt})
+	const postPrompt = (prompt, engine) => {
+		axios.post('/submit', { prompt, engine })
 			.then(res => {
 				setData(res.data);
 			})

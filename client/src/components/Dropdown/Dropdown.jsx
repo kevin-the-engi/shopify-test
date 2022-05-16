@@ -1,12 +1,17 @@
 import React from 'react';
+import './Dropdown.scss';
 
-const Dropdown = ({ engines }) => {
+const Dropdown = ({ engines, getDropdown }) => {
+  const handleChange = (e) => {
+    getDropdown(e.target.value);
+  }
+
   return(
     <label>
-      Pick engine:
-      <select>
+      <select onChange={handleChange} required>
+        <option value=''>Pick engine</option>
         {engines.map(engine => 
-          <option value={engine}>{engine}</option>
+          <option key={engine} value={engine}>{engine}</option>
         )}
       </select>
     </label>
