@@ -60,20 +60,13 @@ app.post('/submit', (req, res) => {
   axios.post(engineAPI, request, KEY)
     .then((apiRes) => {
       apiRes.data.prompt = prompt;
-    
+
       // Save prompt and response data from API to database
-      controller.createData(apiRes.data, err => {
+      controller.createData(apiRes.data, (err, data) => {
         if (err) {
           res.sendStatus(400);
         } else {
-          // Get collected data from database to send back
-          controller.readData((err, data) => {
-            if (err) {
-              res.sendStatus(404);
-            } else {
-              res.status(201).send(data);
-            }
-          })
+          res.status(201).send(data);
         }
       })
     })

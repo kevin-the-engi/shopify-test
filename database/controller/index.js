@@ -11,7 +11,7 @@ const createData = ({ id, created, choices, prompt }, callback) => {
     if (err) {
       callback(err, null);
     } else {
-      callback(null);
+      readData(callback);
     }
   })
 }
