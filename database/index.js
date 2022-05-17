@@ -1,7 +1,8 @@
 require('dotenv').config()
 const mongoose = require('mongoose');
+const HOST = process.env.HOST || 'localhost';
 
-mongoose.connect(`mongodb://localhost:27017/openai`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(`mongodb://${HOST}:27017/openai`, {useNewUrlParser: true, useUnifiedTopology: true});
 
 const db = mongoose.connection;
 

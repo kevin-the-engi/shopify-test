@@ -7,8 +7,8 @@ const controller = require('../database/controller');
 
 const app = express();
 
-const PORT = process.env.PORT;
-const API = process.env.API;
+const PORT = process.env.PORT || 3000;
+const API = process.env.API || 'https://api.openai.com/v1/engines';
 const KEY = {
   headers: {
     'Authorization': `Bearer ${process.env.API_KEY}`
