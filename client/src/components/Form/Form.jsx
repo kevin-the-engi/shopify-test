@@ -28,15 +28,20 @@ const Form = ({ postPrompt, engines }) => {
 				<textarea 
 					type="text" 
 					name="name" 
+					className="textbox"
 					value={prompt} 
 					rows="5" 
-					cols="30" 
+					cols="40" 
 					onChange={handleChange} 
 					placeholder="Write a poem about dinosaurs in the snow"
 				/>
 			<div className="form-footer"> 
-				<Dropdown engines={engines} getDropdown={getDropdown} />
-				<input type="submit" className="submit-btn" value="Submit"/>
+				<div className="container-left">
+					<Dropdown engines={engines} getDropdown={getDropdown} />
+				</div>
+				<div className="container-right">
+					<input type="submit" className="submit-btn" value="Submit"/>
+				</div>
 			</div>
 		</form>
 	)

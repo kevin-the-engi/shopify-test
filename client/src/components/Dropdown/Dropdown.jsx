@@ -8,7 +8,7 @@ const Dropdown = ({ engines, getDropdown }) => {
 
   return(
     <label>
-      <select onChange={handleChange} required>
+      <select className="dropdown" onChange={handleChange} required>
         <option value=''>Pick engine</option>
         {engines.map(engine => 
           <option key={engine} value={engine}>{engine}</option>

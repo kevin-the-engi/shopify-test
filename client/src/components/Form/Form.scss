@@ -1,12 +1,26 @@
 .form {
     width: 50vw;
-    height: 20vh;
+    height: 30vh;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
 }
 
+.textbox {
+    height: 15vh;
+    padding: 1em;
+}
+
 .form-footer {
+    display: flex;
+}
+
+.container-left {
+    margin-left: 0; 
+    margin-right: auto;
+}
+
+.container-right {
     margin-left: auto; 
     margin-right: 0;
 }
